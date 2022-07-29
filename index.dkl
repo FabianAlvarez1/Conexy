@@ -1,0 +1,23 @@
+#include "dkli.dkh"
+#set "meta-xml-declaration" ""
+
+#!
+program
+{
+    #$
+    html
+    {
+        head
+        {
+            meta(name="viewport" content="width=device-width, initial-scale=1.0")
+            meta(charset="UTF-8")
+            title{$"Conexy"}
+            script(src="conexy.js"){$""}
+            link(href="conexy.css" rel="stylesheet")
+        }
+        body
+        {
+            
+        }
+    }
+}
