@@ -4,6 +4,12 @@
 #!
 program
 {
+    #include "functions.dkh"
+    #include "serialize.dkh"
+    #include "webcl.dkh"
+
+    #include "config.dkl"
+
     #$
     html
     {
@@ -13,11 +19,69 @@ program
             meta(charset="UTF-8")
             title{$"Conexy"}
             script(src="conexy.js"){$""}
+            link(href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet')
             link(href="conexy.css" rel="stylesheet")
         }
         body
         {
-            
+            header(class="header")
+            {
+                div(class="subject")
+                {
+                    p{$"Administración de conexiones"}
+                }
+            }
+            div(class="dashboard")
+            {
+                div(class="dashboard_head")
+                {
+                    i(class='bx bx-hive'){$""}
+                    p(class="title"){$"CONEXY"}
+                    p(class="subtitle"){$"POWERED BY " a(href="https://devkron.org/" target="_blank"){$"DKL"}}
+                }
+                div(class="dashboard_options")
+                {
+                    div(class="option option_principal")
+                    {
+                        i(class="focus"){$""}
+                        div(class="dashboard_button"){$"Home"}
+                    }
+                    div(class="option option_general")
+                    {
+                        i(class="focus"){$""}
+                        div(class="dashboard_button"){$"General"}
+                    }
+                    div(class="option option_applications")
+                    {
+                        i(class="focus"){$""}
+                        div(class="dashboard_button"){$"Aplicaciones"}
+                    }
+                    div(class="option option_databases")
+                    {
+                        i(class="focus"){$""}
+                        div(class="dashboard_button"){$"Base de datos"}
+                    }
+                }
+                div(class="dashboard_footer")
+                {
+                    p{$"INDUXSOFT DATA SERVICES S DE RL DE CV"}
+                }
+            }
+            div(class="container")
+            {
+                div(class="container_header")
+                {
+                    p(class="conteiner_title"){$"Título"}
+                }
+                div(class="container_body")
+                {
+                    $""
+                }
+                div(class="container_side")
+                {
+                    $""
+                }
+            }
         }
     }
 }

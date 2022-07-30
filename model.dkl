@@ -1,0 +1,18 @@
+#include "dkli.dkh"
+
+#!
+module "model"
+{
+    getApps::qn
+    {
+        return dba.apps(qn)
+    }
+    getConnection::qn
+    {
+        return dba.cnns(qn)
+    }
+    getConnections::qn
+    {
+        return dba.cnns(qn)
+    }
+}

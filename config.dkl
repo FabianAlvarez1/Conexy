@@ -1,0 +1,6 @@
+#include "dkli.dkh"
+#!
+module "config"
+{
+    @base_path="/"
+}

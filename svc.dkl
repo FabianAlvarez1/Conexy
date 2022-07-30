@@ -1,0 +1,47 @@
+#include "dkli.dkh"
+
+#!
+module "program"
+{
+    #include "functions.dkh"
+    #include "serialize.dkh"
+    #include "webcl.dkh"
+
+    #include "model.dk"
+
+    @http_context<"response/headers/content-type">:"application/json;charset=utf-8"
+    @http_context<"response/output">:"text"
+
+    action = @@(@http_context,"request/headers/request_method")
+    resourceType = @@(@http_context,"request/get/resourceType")
+    ref data=from.json(@@(@http_context,"request/post_string"))
+
+    if (@@(@http_context,"request/get/resourceType/name")) != "" { action = "LIST" }
+
+    switch resourceType
+    {
+        case "applications"
+        {
+            if toupper(action) == "GET"
+            {
+                @http_context<"response/text">: to.json(getApps(@@(data,"qn")))
+                return
+            }
+        }
+        case "connections"
+        {
+            if toupper(action) == "GET"
+            {
+                @http_context<"response/text">: to.json(getConnection(@@(data,"qn")))
+                return
+            }
+            else if toupper(action) == "LIST"
+            {
+                @http_context<"response/text">: to.json(getConnections(@@(data,"qn")))
+                return
+            }
+        }
+    }
+
+    do rise_error(0,"Parámetros inválidos")
+}
